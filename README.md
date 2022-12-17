@@ -30,4 +30,7 @@ Add this to config file for theme section
 ```
 The ```config.data.foot``` is the data ID for focontent. And make sure the type of data is "base64".
 
+# Closing
+That's all there is to it. Alhamdulillaah...
+
 
