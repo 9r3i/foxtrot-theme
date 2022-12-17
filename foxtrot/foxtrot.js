@@ -3,7 +3,7 @@
 
 /** require object and method -- foxtrot.init */
 window.foxtrot=window.foxtrot||{
-  version:'1.0.0',
+  version:'1.0.1',
   uri:'https://github.com/9r3i/foxtrot-theme',
   init:function(){
     ForceWebsite.slideHeadLoader(1,100);
@@ -12,7 +12,12 @@ window.foxtrot=window.foxtrot||{
     ];
     ForceWebsite.theme.loadFiles(files,true);
     setTimeout(e=>{
-      ForceWebsite.theme.putHTML(ForceWebsite.theme.content);
+      ForceWebsite.Force.onFunctionReady('OldWeb',r=>{
+        if(!r){
+          alert('Error: Failed to load OldWeb library.');
+          return;
+        }ForceWebsite.theme.putHTML(ForceWebsite.theme.content);
+      });
     },(100*files.length)+500);
   },
   foot:function(){
