@@ -19,7 +19,7 @@ Add this to config file for theme section
 {
   "theme": {
     "namespace": "foxtrot",
-    "host": "https://9r3i.github.io/foxtrot-theme/",
+    "host": "https://9r3i.github.io/foxtrot-theme",
     "config": {
       "data": {
         "limit": 8,
