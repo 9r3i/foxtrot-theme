@@ -3,7 +3,7 @@
 
 /** require object and method -- foxtrot.init */
 window.foxtrot=window.foxtrot||{
-  version:'1.0.1',
+  version:'1.0.2',
   uri:'https://github.com/9r3i/foxtrot-theme',
   init:function(){
     ForceWebsite.slideHeadLoader(1,100);
@@ -23,13 +23,14 @@ window.foxtrot=window.foxtrot||{
   foot:function(){
     var id='foxtrot-foot-loader',
     con=foxtrot.loader(id);
-    ForceWebsite.fetch('website.select',function(r){
+    ForceWebsite.fetch('website.select',async function(r){
       if(!Array.isArray(r)){
         ForceObject.splash('Error: Failed to fetch data.');
         return;
       }
       var col=document.getElementById(id),
-      url=ForceWebsite.imageURL(ForceWebsite.theme.config.data.foot),
+      footid=ForceWebsite.theme.config.data.foot,
+      url=await ForceWebsite.imageURL(footid),
       img='<img src="'+url+'" />\n\n';
       col.parentElement.innerHTML=atob(r[0].content);
     },{id:ForceWebsite.theme.config.data.foot});

@@ -5,7 +5,7 @@
  * @require: ForceWebsite
  */
 function OldWeb(){
-this.version='1.1.0';
+this.version='1.1.1';
 this.config=ForceWebsite.config;
 const ForceObject=ForceWebsite.Force;
 /* cloned methods from ForceObject */
@@ -53,6 +53,7 @@ this.bulkContent=function(d){
     }
     /* image */
     img.src=ForceWebsite.imageURL(p.id);
+    img.dataset.pid=p.id;
     img.dataset.slug=p.slug;
     img.onload=function(e){
       var bepid='picture-'+this.dataset.slug;
@@ -60,6 +61,10 @@ this.bulkContent=function(d){
       if(bep){
         bep.style.backgroundImage="url('"+this.src+"')";
       }
+    };
+    img.onerror=async function(e){
+      this.onerror=null;
+      this.src=await ForceWebsite.imageURL(this.dataset.pid);
     };
   }
   if(rowCount<=ForceWebsite.theme.config.data.limit){
@@ -112,6 +117,7 @@ this.pageContent=function(p){
   ]);
   /* image */
   img.src=ForceWebsite.imageURL(p.id);
+  img.dataset.pid=p.id;
   img.dataset.slug=p.slug;
   img.onload=function(e){
     var ppid='page-picture-'+this.dataset.slug;
@@ -120,6 +126,10 @@ this.pageContent=function(p){
       ForceWebsite.clearElement(pp);
       pp.appendChild(img);
     }
+  };
+  img.onerror=async function(e){
+    this.onerror=null;
+    this.src=await ForceWebsite.imageURL(this.dataset.pid);
   };
   /* content */
   if(p.hasOwnProperty('content')){
