@@ -3,8 +3,9 @@
 
 /** require object and method -- foxtrot.init */
 window.foxtrot=window.foxtrot||{
-  version:'1.0.2',
+  version:'1.0.3',
   uri:'https://github.com/9r3i/foxtrot-theme',
+  data:ForceWebsite.theme.config.data,
   init:function(){
     ForceWebsite.slideHeadLoader(1,100);
     var files=[
